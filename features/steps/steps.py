@@ -3,15 +3,14 @@ from selenium import webdriver
 from selenium.webdriver.edge.options import Options
 from selenium.webdriver.edge.service import Service
 from selenium.webdriver.common.by import By
-
+import os
 
 @step('I open google home page')
 def step_impl(context):
     options = Options()
     options.add_argument('--ignore-certificate-errors')
     options.add_argument('--ignore-ssl-errors')
-
-    driver_path=r"C:\Users\Pranj\automation\features\drivers\edge\msedgedriver.exe"
+    driver_path = os.getcwd() + r"\features\drivers\edge\msedgedriver.exe"
     service = Service(driver_path)
     context.driver = webdriver.Edge(service=service, options=options)
     
